@@ -5,6 +5,7 @@ Release:    1
 License:    LICENSE
 URL:        https://gitlab.com/mobian1/devices/eg25-manager
 Source0:    %{name}-%{version}.tar.bz2
+Source1:    %{name}.service
 BuildRequires:  glib2-devel
 BuildRequires:  pkgconfig(libgpiod)
 BuildRequires:  libgudev-devel
@@ -26,12 +27,32 @@ eg25-manager is a daemon for managing the Quectel EG25 modem found on the Pine64
 %install
 rm -rf %{buildroot}
 %meson_install
+install -D -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_libdir}/systemd/system/%{name}.service
+
+mkdir -p %{buildroot}/%{_libdir}/systemd/system/basic.target.wants
+ln -s ../%{name}.service %{buildroot}/%{_libdir}/systemd/system/basic.target.wants/%{name}.service
+
+%preun
+if [ "$1" -eq 0 ]; then
+systemctl stop %{name}.service || :
+fi
+
+%post
+/sbin/ldconfig
+systemctl daemon-reload || :
+systemctl reload-or-try-restart %{name}.service || :
+
+%postun
+/sbin/ldconfig
+systemctl daemon-reload || :
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}/eg25manager
 %{_bindir}/eg25-configure-usb
 %{_libdir}/udev/rules.d/80-modem-eg25.rules
+%{_libdir}/systemd/system/%{name}.service
+%{_libdir}/systemd/system/basic.target.wants/%{name}.service
 %{_datadir}/eg25-manager/pine64,pinephone-1.0.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.1.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.2.toml
