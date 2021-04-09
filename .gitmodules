@@ -1,3 +1,3 @@
 [submodule "eg25-manager"]
 	path = eg25-manager
-	url = https://github.com/sailfish-on-dontbeevil/eg25-manager-1
+	url = https://gitlab.com/mobian1/devices/eg25-manager.git
