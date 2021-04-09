@@ -49,7 +49,6 @@ systemctl daemon-reload || :
 %files
 %defattr(-,root,root,-)
 %{_bindir}/eg25manager
-%{_bindir}/eg25-configure-usb
 %{_libdir}/udev/rules.d/80-modem-eg25.rules
 %{_libdir}/systemd/system/%{name}.service
 %{_libdir}/systemd/system/basic.target.wants/%{name}.service
