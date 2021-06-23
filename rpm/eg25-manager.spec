@@ -1,6 +1,6 @@
 Name:       eg25-manager
 Summary:    EG25 Modem Manager Daemon
-Version:    0.2.1
+Version:    0.3.1
 Release:    1
 License:    LICENSE
 URL:        https://gitlab.com/mobian1/devices/eg25-manager
