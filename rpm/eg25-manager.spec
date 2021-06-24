@@ -49,7 +49,7 @@ systemctl daemon-reload || :
 %files
 %defattr(-,root,root,-)
 %{_bindir}/eg25manager
-%{_libdir}/udev/rules.d/80-modem-eg25.rules
+%{_udevrulesdir}/80-modem-eg25.rules
 %{_libdir}/systemd/system/%{name}.service
 %{_libdir}/systemd/system/basic.target.wants/%{name}.service
 %{_datadir}/eg25-manager/pine64,pinephone-1.0.toml
