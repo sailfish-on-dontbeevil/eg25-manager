@@ -13,6 +13,7 @@ BuildRequires:  pkgconfig(libusb)
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  cmake
+BuildRequires:  systemd
 
 %description
 eg25-manager is a daemon for managing the Quectel EG25 modem found on the Pine64 PinePhone.
