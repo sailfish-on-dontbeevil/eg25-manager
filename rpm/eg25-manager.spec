@@ -28,11 +28,11 @@ eg25-manager is a daemon for managing the Quectel EG25 modem found on the Pine64
 %install
 rm -rf %{buildroot}
 %meson_install
-install -D -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_libdir}/systemd/system/%{name}.service
+install -D -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_udevrulesdir}/
 mv %{buildroot}/usr/lib/udev/rules.d/80-modem-eg25.rules %{buildroot}%{_udevrulesdir}/80-modem-eg25.rules
-mkdir -p %{buildroot}/%{_libdir}/systemd/system/basic.target.wants
-ln -s ../%{name}.service %{buildroot}/%{_libdir}/systemd/system/basic.target.wants/%{name}.service
+mkdir -p %{buildroot}/%{_unitdir}/basic.target.wants
+ln -s ../%{name}.service %{buildroot}/%{_unitdir}/basic.target.wants/%{name}.service
 
 %preun
 if [ "$1" -eq 0 ]; then
@@ -52,8 +52,8 @@ systemctl daemon-reload || :
 %defattr(-,root,root,-)
 %{_bindir}/eg25manager
 %{_udevrulesdir}/80-modem-eg25.rules
-%{_libdir}/systemd/system/%{name}.service
-%{_libdir}/systemd/system/basic.target.wants/%{name}.service
+%{_unitdir}/%{name}.service
+%{_unitdir}/basic.target.wants/%{name}.service
 %{_datadir}/eg25-manager/pine64,pinephone-1.0.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.1.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.2.toml
