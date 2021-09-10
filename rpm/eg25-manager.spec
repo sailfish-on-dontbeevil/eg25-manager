@@ -16,12 +16,14 @@ BuildRequires:  ninja
 BuildRequires:  cmake
 BuildRequires:  systemd
 BuildRequires:  libcurl-devel
+Patch0:         0001-fix-mm_location.patch
 
 %description
 eg25-manager is a daemon for managing the Quectel EG25 modem found on the Pine64 PinePhone.
 
 %prep
 %setup -q -n %{name}-%{version}/%{name}
+%patch0 -p1
 
 %build
 %meson
