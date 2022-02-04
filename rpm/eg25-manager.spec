@@ -59,3 +59,4 @@ systemctl daemon-reload || :
 %{_datadir}/eg25-manager/pine64,pinephone-1.0.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.1.toml
 %{_datadir}/eg25-manager/pine64,pinephone-1.2.toml
+%{_datadir}/eg25-manager/pine64,pinephone-pro.toml
