@@ -52,7 +52,7 @@ systemctl daemon-reload || :
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/eg25manager
+%{_bindir}/eg25-manager
 %{_udevrulesdir}/80-modem-eg25.rules
 %{_unitdir}/%{name}.service
 %{_unitdir}/basic.target.wants/%{name}.service
