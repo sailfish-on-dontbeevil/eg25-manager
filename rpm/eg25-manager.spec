@@ -1,6 +1,6 @@
 Name:       eg25-manager
 Summary:    EG25 Modem Manager Daemon
-Version:    0.4.5
+Version:    0.4.6
 Release:    1
 License:    LICENSE
 URL:        https://gitlab.com/mobian1/devices/eg25-manager
@@ -14,7 +14,7 @@ BuildRequires:  pkgconfig(libusb)
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  cmake
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  libcurl-devel
 
 %description
